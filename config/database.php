@@ -54,10 +54,10 @@ return [
 
         'mysql' => [
             'driver'    => 'mysql',
-            'host'      => env('DB_HOST', 'localhost'),
+            'host'      => env('DB_HOST', 'y2w3wxldca8enczv.cbetxkdyhwsb.us-east-1.rds.amazonaws.com'),
             'database'  => env('DB_DATABASE', 'motiva_db'),
-            'username'  => env('DB_USERNAME', 'root'),
-            'password'  => env('DB_PASSWORD', 'root'),
+            'username'  => env('DB_USERNAME', 'sa1auq6ar8it3cui'),
+            'password'  => env('DB_PASSWORD', 'kestxalbo3sp00n9'),
             'charset'   => 'utf8',
             'collation' => 'utf8_unicode_ci',
             'prefix'    => '',
