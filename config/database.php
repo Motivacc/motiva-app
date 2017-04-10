@@ -54,10 +54,10 @@ return [
 
         'mysql' => [
             'driver'    => 'mysql',
-            'host'      => env('DB_HOST', 'y2w3wxldca8enczv.cbetxkdyhwsb.us-east-1.rds.amazonaws.com'),
-            'database'  => env('DB_DATABASE', 'motiva_db'),
-            'username'  => env('DB_USERNAME', 'sa1auq6ar8it3cui'),
-            'password'  => env('DB_PASSWORD', 'kestxalbo3sp00n9'),
+            'host'      => env('DB_HOST', 'localhost'),
+            'database'  => env('DB_DATABASE', 'heroku_dea3e9ec98fb13c'),
+            'username'  => env('DB_USERNAME', 'be6b7c36b79b2f'),
+            'password'  => env('DB_PASSWORD', '0309cd7b'),
             'charset'   => 'utf8',
             'collation' => 'utf8_unicode_ci',
             'prefix'    => '',
