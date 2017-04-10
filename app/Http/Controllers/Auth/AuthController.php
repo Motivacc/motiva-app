@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Http\Requests\Request;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Routing\Route;
+use Illuminate\Support\Facades\Mail;
 use App\User;
 use Validator;
 use App\Http\Controllers\Controller;
@@ -23,22 +27,18 @@ class AuthController extends Controller
 
     use AuthenticatesAndRegistersUsers, ThrottlesLogins;
 
-    /**
-     * Create a new authentication controller instance.
-     *
-     * @return void
-     */
+
     public function __construct()
     {
         $this->middleware('guest', ['except' => 'getLogout']);
     }
 
-    /**
-     * Get a validator for an incoming registration request.
-     *
-     * @param  array  $data
-     * @return \Illuminate\Contracts\Validation\Validator
-     */
+
+    public function login(AuthenticatesUsers $authenticatesUsers, Request $request, $provider = null)
+    {
+        return $authenticatesUsers->excute($request->all(), $this, $provider);
+    }
+
     protected function validator(array $data)
     {
         return Validator::make($data, [
@@ -61,5 +61,21 @@ class AuthController extends Controller
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
+    }
+    public function store(Request $request)
+    {
+        $users = new User($request->all());
+//        $users->confirm_token = str_random(120);
+        $users->save();
+//        $url = route('register/confirmation/{token}', ['token' => $users->confirm_token]);
+//        Mail::send('emails/registration', compact('users', 'url'), function ($m) use ($users) {
+//            $m->to($users->email, $users->username->subject('Activa tu cuenta'));
+//        });
+        return redirect('auth/login');
+        //dd($users);
+    }
+
+    public function index() {
+        return view ('auth.login');
     }
 }
