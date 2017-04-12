@@ -149,6 +149,8 @@ return [
 
         Collective\Html\HtmlServiceProvider::class,
         UxWeb\SweetAlert\SweetAlertServiceProvider::class,
+        AdamWathan\EloquentOAuthL5\EloquentOAuthServiceProvider::class,
+
 
     ],
 
@@ -199,6 +201,7 @@ return [
         'View'      => Illuminate\Support\Facades\View::class,
         'Form'      => Collective\Html\FormFacade::class,
         'Html'      => Collective\Html\HtmlFacade::class,
+        'SocialAuth' => AdamWathan\EloquentOAuth\Facades\OAuth::class,
         'aliases' => [
             'Alert' => UxWeb\SweetAlert\SweetAlert::class,
         ]

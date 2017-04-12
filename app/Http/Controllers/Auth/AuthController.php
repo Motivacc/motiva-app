@@ -65,12 +65,7 @@ class AuthController extends Controller
     public function store(Request $request)
     {
         $users = new User($request->all());
-//        $users->confirm_token = str_random(120);
         $users->save();
-//        $url = route('register/confirmation/{token}', ['token' => $users->confirm_token]);
-//        Mail::send('emails/registration', compact('users', 'url'), function ($m) use ($users) {
-//            $m->to($users->email, $users->username->subject('Activa tu cuenta'));
-//        });
         return redirect('auth/login');
         //dd($users);
     }

@@ -1,52 +1,45 @@
 @extends('skeleton')
-
 @section('content')
+
     <div class="jumbotron">
-        <h2 class="text-center">Login Dashboard</h2>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <h2>Dashboard</h2>
+                    <img src="http://www.motivacc.com/wp-content/themes/candyjobs/inc/images/logo.png" alt="logo">
+
+                </div>
+            </div>
+        </div>
     </div>
+
     <div class="container">
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-primary">
                     <div class="panel-heading">
                         <h4>Login</h4>
                     </div>
-
                     <div class="panel-body">
-                        {!! Form::open()  !!}
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-12">
+                                {!! Form::open(array('url' => 'auth/login', 'method' => 'POST')) !!}
                                 <div class="form-group">
-                                    <label class="control-label">Input addons</label>
-                                    <div class="input-group">
-                                        <span class="input-group-addon"><i class="fa fa-user-circle" aria-hidden="true"></i></span>
-                                        {!! Form::text('email', null, array('class' => 'form-control', 'placeholder' => 'Enter your Email')) !!}
-                                    </div>
+                                    {!! Form::label('email', 'User Name or Email') !!}
+                                    {!! Form::text('email', null, array('class' => 'form-control', 'placeholder' => 'Enter User or Email')) !!}
                                 </div>
 
-                            </div>
-
-                            <div class="col-md-6">
                                 <div class="form-group">
-                                    <label class="control-label">Input addons</label>
-                                    <div class="input-group">
-                                        <span class="input-group-addon"> <i class="fa fa-lock" aria-hidden="true"></i></span>
-                                        <input type="password" class="form-control" name="password" placeholder="Enter your Password">
-                                    </div>
+                                    {!! Form::label('password', 'Password') !!}
+                                    <input type="password" name="password" class="form-control" placeholder="Enter your Password" >
                                 </div>
+
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-success">Login !!</button>
+                                </div>
+                                {!! Form::close() !!}
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="form-group">
-                                <div class="col-md-6">
-                                    <button type="submit" class="btn btn-success">User Login</button>
-                                </div>
-                                <div class="col-md-6">
-                                    <a href="">Forgot your password?</a>
-                                </div>
-                            </div>
-                        </div>
-                        {!! Form::close() !!}
                     </div>
                 </div>
             </div>
