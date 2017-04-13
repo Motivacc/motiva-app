@@ -1,6 +1,6 @@
 @extends('skeleton')
 
-@section('content')
+@section('navbar')
     <nav class="navbar navbar-default">
         <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -25,30 +25,30 @@
                     <li><a href="{{URL('dashboard/skills')}}">+ Options &nbsp; <i class="fa fa-database" aria-hidden="true"></i></a></li>
                     <li><a href="{{URL('dashboard/users')}}">App Settings &nbsp; <i class="fa fa-cog" aria-hidden="true"></i></a></li>
                     {{--<li class="dropdown">--}}
-                        {{--<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>--}}
-                        {{--<ul class="dropdown-menu">--}}
-                            {{--<li><a href="#">Users</a></li>--}}
-                            {{--<li><a href="#">Another action</a></li>--}}
-                            {{--<li><a href="#">Something else here</a></li>--}}
-                            {{--<li role="separator" class="divider"></li>--}}
-                            {{--<li><a href="#">Separated link</a></li>--}}
-                            {{--<li role="separator" class="divider"></li>--}}
-                            {{--<li><a href="#">One more separated link</a></li>--}}
-                        {{--</ul>--}}
+                    {{--<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>--}}
+                    {{--<ul class="dropdown-menu">--}}
+                    {{--<li><a href="#">Users</a></li>--}}
+                    {{--<li><a href="#">Another action</a></li>--}}
+                    {{--<li><a href="#">Something else here</a></li>--}}
+                    {{--<li role="separator" class="divider"></li>--}}
+                    {{--<li><a href="#">Separated link</a></li>--}}
+                    {{--<li role="separator" class="divider"></li>--}}
+                    {{--<li><a href="#">One more separated link</a></li>--}}
+                    {{--</ul>--}}
                     {{--</li>--}}
                 </ul>
                 {{--<form class="navbar-form navbar-left">--}}
-                    {{--<div class="form-group">--}}
-                        {{--<input type="text" class="form-control" placeholder="Search">--}}
-                    {{--</div>--}}
-                    {{--<button type="submit" class="btn btn-default">Submit</button>--}}
+                {{--<div class="form-group">--}}
+                {{--<input type="text" class="form-control" placeholder="Search">--}}
+                {{--</div>--}}
+                {{--<button type="submit" class="btn btn-default">Submit</button>--}}
                 {{--</form>--}}
                 <ul class="nav navbar-nav navbar-right">
 
                     <li class="dropdown">
                         <a  href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Settings  &nbsp; <i class="fa fa-cogs" aria-hidden="true"></i></a> <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="#">Log Out  &nbsp; <i class="fa fa-lock" aria-hidden="true"></i></a></li>
+                            <li><a href="{{ URL::to('dashboard/home') }}">Log Out  &nbsp; <i class="fa fa-lock" aria-hidden="true"></i></a></li>
                             {{--<li><a href="#">Another action</a></li>--}}
                             {{--<li><a href="#">Something else here</a></li>--}}
                             {{--<li role="separator" class="divider"></li>--}}
@@ -59,7 +59,10 @@
             </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
     </nav>
-<div class="container">
+@endsection
+
+@section('content')
+    <div class="container">
     <div class="row">
         <div class="col-md-12">
             <div class="row">
@@ -69,20 +72,22 @@
                         <table class="table table-hover">
                             <thead>
                             <tr>
-                                <th>Username</th>
+                                <th>Name</th>
                                 <th>Email</th>
-                                <th>Phone</th>
+                                <th>Created</th>
 
                             </tr>
                             </thead>
 
                             <tbody>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                            @foreach($users as $user)
+                                <tr>
+                                    <td>{{$user->name}}</td>
+                                    <td>{{$user->email}}</td>
+                                    <td>{{$user->created_at->diffForHumans()}}</td>
 
-                            </tr>
+                                </tr>
+                            @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -94,19 +99,24 @@
                             <thead>
                             <tr>
                                 <th>Applicant Name</th>
+                                <th>Pay Range</th>
                                 <th>Email</th>
                                 <th>Phone</th>
+
 
                             </tr>
                             </thead>
 
                             <tbody>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                             @foreach($applicants as $applicant)
+                                 <tr>
+                                     <td>{{$applicant->name}}</td>
+                                     <td>{{$applicant->payrange}}</td>
+                                     <td><{{$applicant->email}}/td>
+                                     <td>{{$applicant->mobilephone}}</td>
 
-                            </tr>
+                                 </tr>
+                             @endforeach
                             </tbody>
                         </table>
                     </div>

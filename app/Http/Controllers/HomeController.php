@@ -63,10 +63,10 @@ class HomeController extends Controller
         $options = JobOptions::orderBy('id', 'ASC')->paginate('5');
         $positions = Position::orderBy('id', 'ASC')->paginate('5');
         $maritals = Martial::orderBy('id', 'ASC')->paginate('5');
-        $user = User::orderBy('id', 'ASC')->paginate('5');
+        $users = User::orderBy('id', 'ASC')->paginate('5');
         $applicants = Applicant::orderBy('id', 'ASC')->paginate('5');
         $genders = Gender::orderBy('id', 'ASC')->paginate('5');
-        return view('home.index', compact('options', 'skills', 'positions', 'maritals', 'user', 'applicants', 'genders'));
+        return view('home.index', compact('options', 'skills', 'positions', 'maritals', 'users', 'applicants', 'genders'));
     }
 
     /**

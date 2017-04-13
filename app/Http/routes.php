@@ -18,26 +18,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('google/login', function() {
-    try {
-        SocialAuth::login('google');
-    } catch (ApplicationRejectedException $e) {
-        // User rejected application
-    } catch (InvalidAuthorizationCodeException $e) {
-        // Authorization was attempted with invalid
-        // code,likely forgery attempt
-    }
-
-    // Current user is now available via Auth facade
-    $user = Auth::user();
-
-    return Redirect::intended();
-});
 
 // Authentication routes...
 Route::get('auth/login', 'Auth\AuthController@getLogin');
 Route::post('auth/login', 'Auth\AuthController@postLogin');
-Route::get('auth/logout', 'Auth\AuthController@getLogout');
+//Route::get('auth/logout', 'Auth\AuthController@logout');
+Route::get('auth/logout', array('uses' => 'Auth\AccountController@logout'));
 
 // Registration routes...
 Route::get('auth/register', 'Auth\AuthController@getRegister');

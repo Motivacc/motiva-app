@@ -73,4 +73,9 @@ class AuthController extends Controller
     public function index() {
         return view ('auth.login');
     }
+
+    public function logout() {
+        Auth::logout(); // logout user
+        return Redirect::to('auth.login'); //redirect back to login
+    }
 }
